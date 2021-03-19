@@ -208,11 +208,20 @@ document.addEventListener('DOMContentLoaded', () => {
           score +=100
           squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
         }
-    //   checkForGameOver()
+      checkForGameOver()
       }, ghost.speed)
     }
   
     //check for a game over
+    function checkForGameOver() {
+        if (squares[pacmanCurrentIndex].classList.contains('ghost') && 
+        !squares[pacmanCurrentIndex].classList.contains('scared-ghost')) {
+            ghosts.forEach(ghost => clearInterval(ghost.timerId))
+            document.removeEventListener('keyup', movePacman)
+            setTimeout(function(){alert('Game Over')
+        }, 500)
+    }
+}
   
     //check for a win - more is when this score is reached
     
