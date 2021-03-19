@@ -220,9 +220,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.removeEventListener('keyup', movePacman)
             setTimeout(function(){alert('Game Over')
         }, 500)
+        // scoreDisplay.innerHTML = ' Game Over, Try Again'
     }
 }
   
     //check for a win - more is when this score is reached
+    function checkForWin() {
+        if (score === 274) {
+            ghosts.forEach(ghost => clearInterval(ghost.timerId))
+            document.removeEventListener('keyup', movePacman)
+            setTimeout(function(){alert('You Win')
+        }, 500)
+            // scoreDisplay.innerHTML = 'You Win'
+        }
+    }
     
   })
